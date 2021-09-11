@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Tabs, Layout, Row, Col, List } from 'antd';
-const { TabPane } = Tabs;
+import TodoItem from './TodoItem';
 
-const TodoTab = ({ todos }) => {
+const TodoTab = ({ todos, onTodoRemoval,
+    onTodoToggle, }) => {
     return (
         <><List
             locale={{
@@ -10,7 +11,11 @@ const TodoTab = ({ todos }) => {
             }}
             dataSource={todos}
             renderItem={(todo) => (
-                <li key={todo.id}>Title: {todo.title} | Complete: {todo.completed.toString()}</li>
+                <TodoItem
+                    todo={todo}
+                    onTodoToggle={onTodoToggle}
+                    onTodoRemoval={onTodoRemoval}
+                />
             )}
             pagination={{
                 position: 'bottom',

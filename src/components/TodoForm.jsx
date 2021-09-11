@@ -2,13 +2,14 @@ import React from 'react';
 import { Form, Row, Col, Button, Input } from 'antd';
 import { PlusCircleFilled } from '@ant-design/icons';
 
-const TodoForm = () => {
+const TodoForm = ({onFormSubmit}) => {
     const [form] = Form.useForm();
 
     const onFinish = () => {
         /*onFormSubmit({
           name: form.getFieldValue('name'),
         });*/
+        onFormSubmit();
         console.log(form.getFieldValue('name'));
 
         form.resetFields();
