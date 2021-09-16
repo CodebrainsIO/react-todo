@@ -6,11 +6,11 @@ const TodoForm = ({onFormSubmit}) => {
     const [form] = Form.useForm();
 
     const onFinish = () => {
-        /*onFormSubmit({
-          name: form.getFieldValue('name'),
-        });*/
-        onFormSubmit();
-        console.log(form.getFieldValue('name'));
+        onFormSubmit({
+            title: form.getFieldValue('title'),
+            completed: false
+        });
+        console.log(form.getFieldValue('title'));
 
         form.resetFields();
     };
@@ -25,7 +25,7 @@ const TodoForm = ({onFormSubmit}) => {
             <Row gutter={20}>
                 <Col xs={24} sm={24} md={17} lg={19} xl={20}>
                     <Form.Item
-                        name={'name'}
+                        name={'title'}
                         rules={[{ required: true, message: 'This field is required' }]}
                     >
                         <Input placeholder="What needs to be done?" />
